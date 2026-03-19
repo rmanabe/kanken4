@@ -102,6 +102,7 @@ function renderQ(){
   document.getElementById('qhint').textContent=q.hint||'';
   const g=document.getElementById('opts');const long=q.opts.some(o=>o.length>8);g.className='opts '+(long?'g1':'g2');g.innerHTML='';
   q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.addEventListener('click',()=>selAns(i));g.appendChild(b);});
+  g.style.pointerEvents='none';setTimeout(()=>{g.style.pointerEvents='';},350);
   document.getElementById('fb').className='fb';document.getElementById('btn-nxt').className='nxt';
 }
 
