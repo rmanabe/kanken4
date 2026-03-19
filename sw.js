@@ -1,4 +1,4 @@
-const CACHE = 'kanken4-v8';
+const CACHE = 'kanken4-v10';
 const FILES = ['./index.html', './app.js', './questions.js', './manifest.json'];
 
 self.addEventListener('install', e => {
