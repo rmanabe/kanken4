@@ -113,7 +113,7 @@ function selAns(idx){
   document.getElementById('fbi').textContent=ok?'✓':'✗';
   document.getElementById('fbody').innerHTML=ok?'<b>正解！</b>':'<b>不正解。</b>　正解：'+q.a;
   document.getElementById('fb').className='fb show '+(ok?'ok2':'ng2');
-  document.getElementById('btn-nxt').className='nxt show';
+  if(ok){setTimeout(()=>nextQ(),800);}else{document.getElementById('btn-nxt').className='nxt show';}
 }
 
 function nextQ(){ST.idx++;if(ST.idx>=ST.queue.length)showResult();else renderQ();}
@@ -131,7 +131,7 @@ function showResult(){
   ST.queue.forEach(q=>{const id=qid(q),ok=ST.sC.has(id),ng=ST.sW.has(id);if(!ok&&!ng)return;const d=document.createElement('div');d.className='ritem';d.innerHTML=`<div class="rdot ${ok?'dok':'dng'}"></div><div><div class="rq">${q.mainQ}</div><div class="ra">正解：${q.a}</div></div>`;list.appendChild(d);});
 }
 
-function goHome(){showPg('pg-home');renderHome();}
+function goHome(){if(ST.eN)selE=ST.eN;showPg('pg-home');renderHome();}
 function showPg(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
 renderHome();
